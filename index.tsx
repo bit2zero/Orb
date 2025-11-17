@@ -239,10 +239,10 @@ export class GdmLiveAudio extends LitElement {
             const newLog = [...this.transcriptionLog];
 
             if (fullInput) {
-              newLog.push({speaker: 'You', text: fullInput});
+              newLog.push({speaker: '送信内容', text: fullInput});
             }
             if (fullOutput) {
-              newLog.push({speaker: 'Orb', text: fullOutput});
+              newLog.push({speaker: '受信内容', text: fullOutput});
             }
             this.transcriptionLog = newLog;
             this.currentInputText = '';
@@ -389,7 +389,7 @@ export class GdmLiveAudio extends LitElement {
               (entry) => html`
                 <p>
                   <span
-                    class="${entry.speaker === 'You' ? 'user' : 'model'}"
+                    class="${entry.speaker === '送信内容' ? 'user' : 'model'}"
                     >${entry.speaker}:</span
                   >
                   ${entry.text}
@@ -398,12 +398,12 @@ export class GdmLiveAudio extends LitElement {
             )}
             ${this.currentInputText
               ? html`<p>
-                  <span class="user">You:</span> ${this.currentInputText}...
+                  <span class="user">送信内容:</span> ${this.currentInputText}...
                 </p>`
               : ''}
             ${this.currentOutputText
               ? html`<p>
-                  <span class="model">Orb:</span> ${this.currentOutputText}...
+                  <span class="model">受信内容:</span> ${this.currentOutputText}...
                 </p>`
               : ''}
           </div>
